@@ -4,16 +4,16 @@ import {Metadata} from "next";
 export const generateMetadata = async (): Promise<Metadata> => {
 
     return {
-        title: "Users page title",
+        title: "Comments page title",
 
     }
 }
-const UsersPage = () => {
+const CommentsPage = () => {
     return (
         <div>
-          users page
+          comments page
         </div>
     );
 };
 
-export default UsersPage;
+export default CommentsPage;

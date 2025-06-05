@@ -3,15 +3,15 @@ type Props = {
 }
 
 
-const UserPage = async({params}:Props) => {
+const PostPage = async({params}:Props) => {
   const {id} = await params;
     console.log(id);
 
     return (
         <div>
-user page content {id}
+post page content {id}
         </div>
     );
 };
 
-export default UserPage;
+export default PostPage;

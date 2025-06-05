@@ -1,12 +1,10 @@
 import React from "react";
 
 type Props = {children: React.ReactNode};
-
-
-const UserLayout = ({children}:Props) => {
+const CommentLayout = ({children}:Props) => {
     return (
         <div>
-            user layout content
+            comment layout content
 
             {children}
 
@@ -14,5 +12,5 @@ const UserLayout = ({children}:Props) => {
     );
 };
 
-export default UserLayout;
+export default CommentLayout;
 
