@@ -1,4 +1,6 @@
 import {Metadata} from "next";
+import {UsersComponent} from "@/components/users/UsersComponent";
+import React from "react";
 
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -8,10 +10,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     }
 }
+
 const UsersPage = () => {
+
     return (
         <div>
-          users page
+            <UsersComponent/>
+            users page content
         </div>
     );
 };

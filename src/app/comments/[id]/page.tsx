@@ -1,5 +1,5 @@
 type Props = {
-    params:{id:string}
+    params:Promise<{id:string}>
 }
 
 

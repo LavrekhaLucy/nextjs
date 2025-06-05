@@ -1,15 +1,24 @@
+import {Metadata} from "next";
+
 type Props = {
-    params:{id:string}
+    params:Promise<{id:string}>
+}
+export const generateMetadata = async (): Promise<Metadata> => {
+
+    return {
+        title: "User page title",
+
+    }
 }
 
 
-const UserPage = async({params}:Props) => {
+const UserPage= async({params}:Props) => {
   const {id} = await params;
     console.log(id);
 
     return (
         <div>
-user page content {id}
+          user page content {id}
         </div>
     );
 };

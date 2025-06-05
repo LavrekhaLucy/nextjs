@@ -1,4 +1,5 @@
 import {Metadata} from "next";
+import {CommentsComponent} from "@/components/comments/CommentsComponent";
 
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -11,6 +12,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const CommentsPage = () => {
     return (
         <div>
+            <CommentsComponent/>
           comments page
         </div>
     );

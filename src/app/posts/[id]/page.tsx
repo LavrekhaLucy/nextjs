@@ -1,5 +1,5 @@
 type Props = {
-    params:{id:string}
+    params:Promise<{id:string}>
 }
 
 
@@ -9,7 +9,8 @@ const PostPage = async({params}:Props) => {
 
     return (
         <div>
-post page content {id}
+
+          post page content {id}
         </div>
     );
 };
