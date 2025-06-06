@@ -4,7 +4,7 @@ import {UserComponent} from "@/components/user/UserComponent";
 export const UsersComponent = async () => {
     const users = await getAllUsers();
 
-    console.log(users);
+
 
     return (
         <div>

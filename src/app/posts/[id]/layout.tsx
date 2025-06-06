@@ -5,7 +5,7 @@ type Props = {children: React.ReactNode};
 const PostLayout = ({children}:Props) => {
     return (
         <div>
-            post layout content
+            <h4>Post layout content</h4>
 
             {children}
 

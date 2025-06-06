@@ -1,7 +1,11 @@
 import {Metadata} from "next";
+import UserService from "@/services/UserService";
+import {SearchParams} from "next/dist/server/request/search-params";
+
 
 type Props = {
-    params:Promise<{id:string}>
+    params: Promise<{id: string}>;
+    searchParams: Promise<SearchParams>;
 }
 export const generateMetadata = async (): Promise<Metadata> => {
 
@@ -10,16 +14,19 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     }
 }
+const UserPage= async(props:Props) => {
 
-
-const UserPage= async({params}:Props) => {
-  const {id} = await params;
-    console.log(id);
 
     return (
-        <div>
-          user page content {id}
-        </div>
+        <>
+
+            <h4>User page content</h4>
+            <UserService {...props} />
+
+
+        </>
+
+
     );
 };
 

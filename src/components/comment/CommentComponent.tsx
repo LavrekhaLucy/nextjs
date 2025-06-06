@@ -9,7 +9,7 @@ export const CommentComponent = ({comment}: CommentComponentProps) => {
     return (
         <div>
             {
-                <Link href={`/comments/`+ comment.id.toString() }>{comment.id} {comment.name}</Link>
+                <Link href={ {pathname:`/comments/`+ comment.id.toString(), query:{data:JSON.stringify(comment)} } }>{comment.id} {comment.name}</Link>
             }
         </div>
     );

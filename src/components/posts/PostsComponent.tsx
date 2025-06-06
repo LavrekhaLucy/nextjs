@@ -3,7 +3,7 @@ import {PostComponent} from "@/components/post/PostComponent";
 
 export const PostsComponent = async() => {
     const posts = await getAllPosts();
-    console.log(posts);
+
     return (
         <div>
             {

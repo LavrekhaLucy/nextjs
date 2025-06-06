@@ -8,10 +8,11 @@ interface UserComponentProps {
 export const UserComponent = ({user}: UserComponentProps) => {
 
 
+
     return (
         <div>
             {
-                <Link href={`/users/`+ user.id.toString() }>{user.id} {user.name}</Link>
+                <Link href={{pathname:`/users/`+ user.id.toString(), query:{data:JSON.stringify(user)} }}>{user.id} {user.name}</Link>
             }
         </div>
     );

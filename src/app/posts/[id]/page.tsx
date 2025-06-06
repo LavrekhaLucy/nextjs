@@ -1,16 +1,20 @@
+import {SearchParams} from "next/dist/server/request/search-params";
+import PostService from "@/services/PostService";
+
 type Props = {
-    params:Promise<{id:string}>
+    params:Promise<{id:string}>;
+    searchParams:Promise<SearchParams>;
 }
 
 
-const PostPage = async({params}:Props) => {
-  const {id} = await params;
-    console.log(id);
+const PostPage = async(props:Props) => {
+
 
     return (
         <div>
 
-          post page content {id}
+            <h4>Post page content </h4>
+            <PostService {...props} />
         </div>
     );
 };

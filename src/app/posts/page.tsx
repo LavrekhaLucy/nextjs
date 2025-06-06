@@ -12,8 +12,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const PostsPage = () => {
     return (
         <div>
+            <h4>Posts page</h4>
             <PostsComponent/>
-          posts page
+
         </div>
     );
 };

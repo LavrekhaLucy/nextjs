@@ -9,7 +9,7 @@ export const PostComponent = ({post}: PostComponentProps) => {
     return (
         <div>
             {
-                <Link href={`/posts/`+ post.id.toString() }>{post.id} {post.title}</Link>
+                <Link href={{pathname:`/posts/`+ post.id.toString(), query: {data:JSON.stringify(post)} }}>{post.id} {post.title}</Link>
             }
 
         </div>

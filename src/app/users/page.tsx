@@ -15,8 +15,9 @@ const UsersPage = () => {
 
     return (
         <div>
+            <h4>Users page content</h4>
             <UsersComponent/>
-            users page content
+
         </div>
     );
 };

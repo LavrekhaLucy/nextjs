@@ -3,7 +3,7 @@ import {CommentComponent} from "@/components/comment/CommentComponent";
 
 export const CommentsComponent = async() => {
     const comments =await getAllComments();
-    console.log(comments);
+
     return (
         <div>
 

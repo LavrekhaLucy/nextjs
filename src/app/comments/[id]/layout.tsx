@@ -4,7 +4,7 @@ type Props = {children: React.ReactNode};
 const CommentLayout = ({children}:Props) => {
     return (
         <div>
-            comment layout content
+            <h4>Comment layout content</h4>
 
             {children}
 
