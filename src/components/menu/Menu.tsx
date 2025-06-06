@@ -5,9 +5,9 @@ const Menu = () => {
         <>
             <ul>
                 <li>
-                    <Link href="/">Home</Link>
+                    <Link href="/public">Home</Link>
                 </li><li>
-                    <Link href="/cars">Users</Link>
+                    <Link href="/cars">Cars</Link>
                 </li>
 
             </ul>
