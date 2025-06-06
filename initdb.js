@@ -4,6 +4,7 @@ const db = sql('cars.db');
 
 const carsAPI =
     [
+
         {
             "id": 14561,
             "brand": "hil",
@@ -2120,7 +2121,7 @@ async function initData() {
     for (const cars of carsAPI) {
         stmt.run(cars);
     }
-    console.log("Дані  додано до бази");
+
 }
 
 initData();

@@ -7,14 +7,9 @@ const Menu = () => {
                 <li>
                     <Link href="/">Home</Link>
                 </li><li>
-                    <Link href="/users">Users</Link>
+                    <Link href="/cars">Users</Link>
                 </li>
-                <li>
-                    <Link href="/posts">Posts</Link>
-                </li>
-                <li>
-                    <Link href="/comments">Comments</Link>
-                </li>
+
             </ul>
         </>
     );
