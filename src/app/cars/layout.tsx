@@ -1,20 +1,21 @@
-import type {Metadata} from "next";
-import Menu from "@/components/Menu";
+import {Metadata} from "next";
 import React from "react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata={
     title: "Cars Metadata",
 
-};
+}
+type Props = {children: React.ReactNode};
 
-export default function CarsLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
+const CarsLayout = ({children}:Props) => {
     return (
         <div>
+            cars layout
 
-        <Menu/>
-        <hr/>
-        {children}
-
+            {children}
+            <hr/>
         </div>
     );
-}
+};
+
+export default CarsLayout;
