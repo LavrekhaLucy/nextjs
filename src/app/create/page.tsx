@@ -18,6 +18,8 @@ export default async function CreatePage ()   {
     return (
 
     <div className={'Cars'}>
+        <h4>create cars page</h4>
+
 
         <Form action={SaveAction}>
             <input type='text' name='brand' placeholder='Brand' />
@@ -27,12 +29,11 @@ export default async function CreatePage ()   {
         </Form>
 
 
-        <h4>create cars page</h4>
-
-
         {
+
             carsArray.map(car => (<div key={car.id}>{car.brand} --- {car.year}</div>))
         }
+
 
     </div>
 
