@@ -10,13 +10,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     }
 }
-const CommentsPage = () => {
+const CarsPage = () => {
     return (
         <div>
-           <CarsComponent/>
-            cars page
+            <h4>Cars page</h4>
+            <CarsComponent/>
+
         </div>
     );
 };
 
-export default CommentsPage;
+export default CarsPage;

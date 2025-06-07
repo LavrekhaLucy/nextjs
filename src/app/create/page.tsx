@@ -1,4 +1,6 @@
 import {Metadata} from "next";
+import {getCars, SaveAction} from "@/server-actions/ServerActions";
+import Form from "next/form";
 
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -8,13 +10,32 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     }
 }
-const CreatePage = () => {
-    return (
-        <div>
+export default async function CreatePage ()   {
 
-           create  cars page
-        </div>
+
+    const carsArray = await getCars();
+
+    return (
+
+    <div className={'Cars'}>
+
+        <Form action={SaveAction}>
+            <input type='text' name='brand' placeholder='Brand' />
+            <input type='text' name='year' placeholder='Year' />
+            <button type="submit">Save</button>
+
+        </Form>
+
+
+        <h4>create cars page</h4>
+
+
+        {
+            carsArray.map(car => (<div key={car.id}>{car.brand} --- {car.year}</div>))
+        }
+
+    </div>
+
     );
 };
 
-export default CreatePage;

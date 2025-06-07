@@ -4,7 +4,7 @@ import {CarComponent} from "@/components/car/CarComponent";
 
 const CarsComponent = async() => {
     const cars = await getAllCars();
-    console.log(cars);
+
     return (
         <div>
 
