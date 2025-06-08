@@ -1,6 +1,7 @@
 import {Metadata} from "next";
-import {getCars, SaveAction} from "@/server-actions/ServerActions";
+import { SaveAction} from "@/server-actions/ServerActions";
 import Form from "next/form";
+import {getAllCars} from "@/services/api.service";
 
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -13,7 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 export default async function CreatePage ()   {
 
 
-    const carsArray = await getCars();
+    const carsArray = await getAllCars();
 
     return (
 
@@ -29,14 +30,15 @@ export default async function CreatePage ()   {
         </Form>
 
 
-        {
+       {
 
             carsArray.map(car => (<div key={car.id}>{car.brand} --- {car.year}</div>))
         }
+
+
 
 
     </div>
 
     );
 };
-

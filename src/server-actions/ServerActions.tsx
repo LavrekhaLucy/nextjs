@@ -1,28 +1,27 @@
-        'use server';
+'use server';
 
-        import sql from "better-sqlite3";
+import {sendCars} from "@/services/api.service";
+import {revalidatePath} from "next/cache";
 
-                import {revalidatePath} from "next/cache";
+export const SaveAction = async (formData: FormData) => {
+    const brand = formData.get("brand");
+    const year = formData.get("year");
 
-        const db = sql ('cars.db')
+    if (typeof brand !== "string" || typeof year !== "string") {
+        throw new Error("Невірні дані");
+    }
+
+    const parsedYear = parseInt(year, 10);
+    if (!brand.trim() || isNaN(parsedYear)) {
+        throw new Error("Введіть коректну марку та рік");
+    }
+
+    await sendCars(brand, parsedYear);
 
 
-        export const SaveAction = async (formData:FormData) => {
-            // console.log(formData);
-            // console.log('Save Action');
+    revalidatePath("/cars");
 
-        const brandValue = formData.get('brand');
-        const yearValue = formData.get('year');
 
-        db.prepare(`insert into cars (brand,year)  values(?,?)`)
-         .run(brandValue, yearValue);
 
-       revalidatePath('/create');
-        }
 
-         type Car = { id: number, brand: string, year: number};
-
-         export const getCars =async (): Promise<Car[]> => {
-             return db.prepare<Car[]>(`select * from cars`).all() as Car[];
-         }
-
+};
