@@ -2115,7 +2115,7 @@ db.prepare(`
 async function initData() {
     const stmt = db.prepare(`
         INSERT INTO cars (id,brand, price, year)
-        VALUES (@id,@brand, @price, @year)
+        VALUES (null,@brand, @price, @year)
     `);
 
     for (const cars of carsAPI) {

@@ -6,7 +6,7 @@ import CarsComponent from "@/components/cars/CarsComponent";
 export const generateMetadata = async (): Promise<Metadata> => {
 
     return {
-        title: "Cars page title",
+        title: "Cars page",
 
     }
 }

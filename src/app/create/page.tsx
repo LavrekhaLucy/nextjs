@@ -1,43 +1,32 @@
 import {Metadata} from "next";
-import { SaveAction} from "@/server-actions/ServerActions";
-import Form from "next/form";
-import {getAllCars} from "@/services/api.service";
+import {SaveAction} from "@/server-actions/ServerActions";
+import {CreateCarsComponent} from "@/components/create-cars/CreateCarsComponent";
 
 
 export const generateMetadata = async (): Promise<Metadata> => {
 
     return {
-        title: "Create cars page title",
+        title: "Create cars page",
 
     }
 }
-export default async function CreatePage ()   {
-
-
-    const carsArray = await getAllCars();
+export default function CreatePage ()   {
 
     return (
 
     <div className={'Cars'}>
-        <h4>create cars page</h4>
 
+        <h4>Create cars page</h4>
 
-        <Form action={SaveAction}>
+        <form action={SaveAction}>
             <input type='text' name='brand' placeholder='Brand' />
             <input type='text' name='year' placeholder='Year' />
+            <input type='text' name='price' placeholder='Price' />
             <button type="submit">Save</button>
 
-        </Form>
+        </form>
 
-
-       {
-
-            carsArray.map(car => (<div key={car.id}>{car.brand} --- {car.year}</div>))
-        }
-
-
-
-
+        <CreateCarsComponent/>
     </div>
 
     );
