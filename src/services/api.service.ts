@@ -5,8 +5,10 @@ export const getAllCars = async (): Promise<ICar[]> => {
     const allCars = await fetch('http://185.69.152.209/carsAPI/v1/cars', {
         next:{revalidate:3}
     });
+    const cars = await allCars.json();
 
-    return  await allCars.json();
+    console.log( cars);
+    return cars;
 
 
 };
@@ -18,6 +20,7 @@ export const sendCars = async (brand: string, year: number, price:number): Promi
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({brand, year, price}),
     });
+    console.log( { brand, year, price });
 
     return await newAllCars.json();
 

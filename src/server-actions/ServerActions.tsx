@@ -2,14 +2,15 @@
 
 import {sendCars} from "@/services/api.service";
 import {revalidatePath} from "next/cache";
+import {carsValidator} from "@/validator/carsValidator";
 
 export const SaveAction = async (formData: FormData) => {
-    const brand = formData.get("brand");
+    const carBrand = formData.get("brand");
     const year = formData.get("year");
     const price = formData.get("price");
 
     if (
-        typeof brand !== "string" ||
+        typeof carBrand !== "string" ||
         typeof year !== "string" ||
         typeof price !== "string"
     ) {
@@ -20,21 +21,37 @@ export const SaveAction = async (formData: FormData) => {
     const parsedPrice = parseInt(price);
 
 
-    if (!brand.trim()) {
-        throw new Error("Enter the brand name");
-    }
-
-    if (isNaN(parsedYear) || parsedYear < 1900 || parsedYear > new Date().getFullYear() + 1) {
-        throw new Error("Year entered incorrectly");
-    }
-
-    if (isNaN(parsedPrice) || parsedPrice < 0) {
-        throw new Error("Price must be a positive number");
+    if (!carBrand.trim()) {
+        throw new Error("The 'Brand' field is required");
     }
 
 
-    await sendCars(brand, parsedYear, parsedPrice);
+    const input = {
+        brand: carBrand.trim(),
+        year: Number(parsedYear),
+        price: Number(parsedPrice),
+    };
+
+
+    const { error, value } = carsValidator.validate(input, { abortEarly: false });
+
+    if (error) {
+             throw new Error("Data entered incorrectly");
+
+    }
+
+    await sendCars(value.brand, value.year, value.price);
 
     revalidatePath("/create");
 
 };
+
+
+
+
+
+
+
+
+
+
