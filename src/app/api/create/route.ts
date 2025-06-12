@@ -1,52 +1,17 @@
-// // import {sendCars} from "@/services/api.service";
-// //
-// // export async function POST(request: Request) {
-// //     console.log('✅ API POST /api/create called'); // Для діагностики
-// //
-// //     const data = await request.json();
-// //     console.log('Received data:', data);
-// //
-// //     const newCar = await sendCars(data.brand, data.year, data.price); // Передаємо окремо
-// //     console.log('Created car:', newCar);
-// //
-// //     return Response.json(newCar);
-// // }
-//
-// import { NextRequest, NextResponse } from 'next/server';
-// import {sendCars} from "@/services/api.service";
-//
-// export async function POST(request: NextRequest) {
-//     try {
-//         const data = await request.json();
-//
-//         // Валідація даних
-//         if (!data.brand || !data.year || !data.price) {
-//             return NextResponse.json(
-//                 { error: 'Всі поля обов\'язкові' },
-//                 { status: 400 }
-//             );
-//         }
-//
-//         const newCar = await sendCars(data); // Передаємо окремо
-//     console.log('Created car:', newCar);
-//         // console.log('Отримані дані:', data);
-//
-//         // Приклад збереження (замініть на вашу логіку)
-//         // const newCar = await saveCar(data);
-//
-//         return NextResponse.json(
-//             {
-//                 message: 'Автомобіль створено успішно',
-//                 data: data
-//             },
-//             { status: 201 }
-//         );
-//
-//     } catch (error) {
-//         console.error('Помилка створення автомобіля:', error);
-//         return NextResponse.json(
-//             { error: 'Внутрішня помилка сервера' },
-//             { status: 500 }
-//         );
-//     }
-// }
+import {NextRequest, NextResponse} from 'next/server';
+import {carsValidator} from '@/validator/carsValidator';
+import {sendCars} from '@/services/api.service';
+
+export async function POST(req: NextRequest) {
+
+    const body = await req.json();
+    const { error, value } = carsValidator.validate(body, { abortEarly: false });
+
+    if (error) {
+        return NextResponse.json({ error: error.details.map(e => e.message) }, { status: 400 });
+    }
+
+    await sendCars(value.brand,value.year,value.price);
+
+    return NextResponse.json({ success: true });
+}

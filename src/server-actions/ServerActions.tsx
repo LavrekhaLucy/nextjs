@@ -4,7 +4,7 @@ import {sendCars} from "@/services/api.service";
 import {revalidatePath} from "next/cache";
 import {carsValidator} from "@/validator/carsValidator";
 
-export const SaveAction = async (formData: FormData) => {
+const SaveAction = async (formData: FormData) => {
     const carBrand = formData.get("brand");
     const year = formData.get("year");
     const price = formData.get("price");
@@ -40,18 +40,11 @@ export const SaveAction = async (formData: FormData) => {
 
     }
 
-    await sendCars(value.brand, value.year, value.price);
+    await sendCars(value.brand,value.year,value.price);
 
-    revalidatePath("/create");
+    revalidatePath("/create-car");
 
 };
-
-
-
-
-
-
-
-
+export default SaveAction;
 
 
